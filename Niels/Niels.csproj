@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BB8D9493-3E52-47EA-B167-A3CC16C22C67}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Niels</RootNamespace>
+    <AssemblyName>Niels</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Boards\Board.cs" />
+    <Compile Include="Boards\BoardContext.cs" />
+    <Compile Include="Boards\BoardMain.cs" />
+    <Compile Include="Boards\BoardContextAdditionalInfo.cs" />
+    <Compile Include="Boards\BoardProvider.cs" />
+    <Compile Include="Boards\BoardSubBottom.cs" />
+    <Compile Include="Boards\BoardSubRight.cs" />
+    <Compile Include="Boards\BoardType.cs" />
+    <Compile Include="Collections\BoardPotision.cs" />
+    <Compile Include="Collections\Move.cs" />
+    <Compile Include="Collections\TurnPiece.cs" />
+    <Compile Include="Collections\Piece.cs" />
+    <Compile Include="Collections\Promote.cs" />
+    <Compile Include="Collections\Turn.cs" />
+    <Compile Include="Diagnostics\MoveDebug.cs" />
+    <Compile Include="Diagnostics\StopWatchLogger.cs" />
+    <Compile Include="Evaluators\IEvaluator.cs" />
+    <Compile Include="Evaluators\IFeatureVector.cs" />
+    <Compile Include="Evaluators\IteratorEvaluator.cs" />
+    <Compile Include="Evaluators\RandomEvaluator.cs" />
+    <Compile Include="Evaluators\ScoreIndexEvaluator.cs" />
+    <Compile Include="Evaluators\SequencePositionFeatureVector.cs" />
+    <Compile Include="Extensions\Number\ExtensionUlong.cs" />
+    <Compile Include="Filters\CheckedByMyselefMoveFilter.cs" />
+    <Compile Include="Filters\CanNotMoveFilter.cs" />
+    <Compile Include="Filters\FilterProvider.cs" />
+    <Compile Include="Filters\MoveFilter.cs" />
+    <Compile Include="Filters\FileDuplicatePawnExistsMoveFilter.cs" />
+    <Compile Include="Filters\PieceDuplicateExistsMoveFilter.cs" />
+    <Compile Include="Fools\FoolEvaluator.cs" />
+    <Compile Include="Fools\FoolMoveGenerator.cs" />
+    <Compile Include="Fools\FoolOrder.cs" />
+    <Compile Include="Fools\FoolSearch.cs" />
+    <Compile Include="Generates\KnightDownLeftMoveGenerator.cs" />
+    <Compile Include="Generates\KnightDownRightMoveGenerator.cs" />
+    <Compile Include="Generates\GenerateTarget.cs" />
+    <Compile Include="Generates\HandValueMoveGenerator.cs" />
+    <Compile Include="Generates\MagicBitBoardMoveGenerator.cs" />
+    <Compile Include="Generates\CaptureGenerator.cs" />
+    <Compile Include="Generates\DownLeftMoveGenerator.cs" />
+    <Compile Include="Generates\LeftMoveGenerator.cs" />
+    <Compile Include="Generates\MoveGenerator.cs" />
+    <Compile Include="Generates\KnightUpLeftMoveGenerator.cs" />
+    <Compile Include="Generates\UpLeftMoveGenerator.cs" />
+    <Compile Include="Generates\DownRightMoveGenerator.cs" />
+    <Compile Include="Generates\RightMoveGenerator.cs" />
+    <Compile Include="Generates\KnightUpRightMoveGenerator.cs" />
+    <Compile Include="Generates\UpRightMoveGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generates\DownMoveGenerator.cs" />
+    <Compile Include="Generates\UpMoveGenerator.cs" />
+    <Compile Include="Generates\MoveProvider.cs" />
+    <Compile Include="Helper\FileHelper.cs" />
+    <Compile Include="Helper\MathHelper.cs" />
+    <Compile Include="Helper\RadixConvertHelper.cs" />
+    <Compile Include="Helper\StringHelper.cs" />
+    <Compile Include="Collections\Math\SparseBigMatrix.cs" />
+    <Compile Include="Collections\Math\SparseVector.cs" />
+    <Compile Include="Notation\NotationBase.cs" />
+    <Compile Include="Notation\SfenNotation.cs" />
+    <Compile Include="Orders\DummyOrder.cs" />
+    <Compile Include="Orders\IOrder.cs" />
+    <Compile Include="Players\CpuPlayer.cs" />
+    <Compile Include="Players\IPlayer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Searchs\ISearch.cs" />
+    <Compile Include="Searchs\NegaMax.cs" />
+    <Compile Include="Searchs\NegaMaxBase.cs" />
+    <Compile Include="Searchs\PrincipalVariationSearch.cs" />
+    <Compile Include="Searchs\RandomSearch.cs" />
+    <Compile Include="Searchs\SearchConfig.cs" />
+    <Compile Include="Searchs\SearchConfigProvider.cs" />
+    <Compile Include="Searchs\NodeDebugInfo.cs" />
+    <Compile Include="Searchs\SimpleSearch.cs" />
+    <Compile Include="Strategys\CpuStrategy.cs" />
+    <Compile Include="Strategys\IStrategy.cs" />
+    <Compile Include="Usi\Commands\UsiCommand.cs" />
+    <Compile Include="Usi\UsiCommandReceiver.cs" />
+    <Compile Include="Usi\UsiCommandSender.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,11 @@
+C:\work\visualstudio\Niels\Niels.MagicBitBoardGenerator.Tests\obj\Debug\Niels.MagicBitBoardGenerator.Tests.csprojResolveAssemblyReference.cache
+C:\work\visualstudio\Niels\Niels.MagicBitBoardGenerator.Tests\bin\Debug\Niels.MagicBitBoardGenerator.Tests.dll
+C:\work\visualstudio\Niels\Niels.MagicBitBoardGenerator.Tests\bin\Debug\Niels.MagicBitBoardGenerator.Tests.pdb
+C:\work\visualstudio\Niels\Niels.MagicBitBoardGenerator.Tests\bin\Debug\Niels.dll
+C:\work\visualstudio\Niels\Niels.MagicBitBoardGenerator.Tests\bin\Debug\Niels.MagicBitBoardGenerator.exe
+C:\work\visualstudio\Niels\Niels.MagicBitBoardGenerator.Tests\bin\Debug\Niels.Tests.dll
+C:\work\visualstudio\Niels\Niels.MagicBitBoardGenerator.Tests\bin\Debug\Niels.MagicBitBoardGenerator.pdb
+C:\work\visualstudio\Niels\Niels.MagicBitBoardGenerator.Tests\bin\Debug\Niels.Tests.pdb
+C:\work\visualstudio\Niels\Niels.MagicBitBoardGenerator.Tests\bin\Debug\Niels.pdb
+C:\work\visualstudio\Niels\Niels.MagicBitBoardGenerator.Tests\obj\Debug\Niels.MagicBitBoardGenerator.Tests.dll
+C:\work\visualstudio\Niels\Niels.MagicBitBoardGenerator.Tests\obj\Debug\Niels.MagicBitBoardGenerator.Tests.pdb

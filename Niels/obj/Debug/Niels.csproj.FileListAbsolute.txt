@@ -1,0 +1,5 @@
+C:\work\visualstudio\Niels\Niels\bin\Debug\Niels.dll
+C:\work\visualstudio\Niels\Niels\bin\Debug\Niels.pdb
+C:\work\visualstudio\Niels\Niels\obj\Debug\Niels.dll
+C:\work\visualstudio\Niels\Niels\obj\Debug\Niels.pdb
+C:\work\visualstudio\Niels\Niels\obj\Debug\Niels.csprojResolveAssemblyReference.cache

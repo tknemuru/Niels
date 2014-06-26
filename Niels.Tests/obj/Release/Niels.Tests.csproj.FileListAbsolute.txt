@@ -1,0 +1,7 @@
+C:\work\visualstudio\Niels\Niels.Tests\bin\Release\Niels.Tests.dll
+C:\work\visualstudio\Niels\Niels.Tests\bin\Release\Niels.Tests.pdb
+C:\work\visualstudio\Niels\Niels.Tests\bin\Release\Niels.dll
+C:\work\visualstudio\Niels\Niels.Tests\bin\Release\Niels.pdb
+C:\work\visualstudio\Niels\Niels.Tests\obj\Release\Niels.Tests.csprojResolveAssemblyReference.cache
+C:\work\visualstudio\Niels\Niels.Tests\obj\Release\Niels.Tests.dll
+C:\work\visualstudio\Niels\Niels.Tests\obj\Release\Niels.Tests.pdb

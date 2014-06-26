@@ -1,0 +1,8 @@
+C:\work\visualstudio\Niels\Niels.NormalizedScoreIndexGenerator\obj\Debug\Niels.NormalizedScoreIndexGenerator.csprojResolveAssemblyReference.cache
+C:\work\visualstudio\Niels\Niels.NormalizedScoreIndexGenerator\bin\Debug\Niels.NormalizedScoreIndexGenerator.exe.config
+C:\work\visualstudio\Niels\Niels.NormalizedScoreIndexGenerator\bin\Debug\Niels.NormalizedScoreIndexGenerator.exe
+C:\work\visualstudio\Niels\Niels.NormalizedScoreIndexGenerator\bin\Debug\Niels.NormalizedScoreIndexGenerator.pdb
+C:\work\visualstudio\Niels\Niels.NormalizedScoreIndexGenerator\bin\Debug\Niels.dll
+C:\work\visualstudio\Niels\Niels.NormalizedScoreIndexGenerator\bin\Debug\Niels.pdb
+C:\work\visualstudio\Niels\Niels.NormalizedScoreIndexGenerator\obj\Debug\Niels.NormalizedScoreIndexGenerator.exe
+C:\work\visualstudio\Niels\Niels.NormalizedScoreIndexGenerator\obj\Debug\Niels.NormalizedScoreIndexGenerator.pdb

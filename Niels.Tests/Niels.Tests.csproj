@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{12C812BE-8F43-4588-8D3E-3D3FCCCAC7F4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Niels.Tests</RootNamespace>
+    <AssemblyName>Niels.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <Compile Include="Boards\BoardContextTest.cs" />
+    <Compile Include="Collections\MoveTest.cs" />
+    <Compile Include="Evaluators\ScoreIndexEvaluatorTest.cs" />
+    <Compile Include="Evaluators\SequencePositionFeatureVectorTest.cs" />
+    <Compile Include="Filters\CanNotMoveFilterTest.cs" />
+    <Compile Include="Filters\CheckedByMyselefMoveFilterTest.cs" />
+    <Compile Include="Filters\FileDuplicatePawnExistsMoveFilterTest.cs" />
+    <Compile Include="Filters\PieceDuplicateExistsMoveFilterTest.cs" />
+    <Compile Include="Generates\KingMoveGeneratorTest.cs" />
+    <Compile Include="Generates\KnightMoveGeneratorTest.cs" />
+    <Compile Include="Generates\HandvalueMoveGeneratorTest.cs" />
+    <Compile Include="Generates\HorseMoveGeneratorTest.cs" />
+    <Compile Include="Generates\LaunceMoveGeneratorTest.cs" />
+    <Compile Include="Bugs\MoveBugTest.cs" />
+    <Compile Include="Generates\PromoteMoveGeneratorTest.cs" />
+    <Compile Include="Generates\RightMoveGeneratorTes.cs" />
+    <Compile Include="Generates\DownLeftMoveGeneratorTest.cs" />
+    <Compile Include="Generates\BishopMoveGeneratorTest.cs" />
+    <Compile Include="Generates\RookMoveGeneratorTest.cs" />
+    <Compile Include="Generates\UpLeftMoveGeneratorTest.cs" />
+    <Compile Include="Generates\DownRightMoveGeneratorTest.cs" />
+    <Compile Include="Generates\UpRightMoveGeneratorTest.cs" />
+    <Compile Include="Generates\DownMoveGeneratorTest.cs" />
+    <Compile Include="Generates\UpMoveGeneratorTest.cs" />
+    <Compile Include="Generates\PawnMoveGeneratorTest.cs" />
+    <Compile Include="Notation\SfenNotationTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestHelper\BoardContextForTest.cs" />
+    <Compile Include="TestHelper\BoardForTest.cs" />
+    <Compile Include="TestHelper\MoveForTest.cs" />
+    <Compile Include="TestHelper\SfenNotationForTest.cs" />
+    <Compile Include="TestHelper\Testing\BoardContextForTestTest.cs" />
+    <Compile Include="TestHelper\Testing\MoveForTestTest.cs" />
+    <Compile Include="TestHelper\UsiCommandReceiverForTest.cs" />
+    <Compile Include="Usi\UsiCommandReceiverTest.cs" />
+    <Compile Include="Usi\UsiCommandSenderTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Niels\Niels.csproj">
+      <Project>{bb8d9493-3e52-47ea-b167-a3cc16c22c67}</Project>
+      <Name>Niels</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Searchs\" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

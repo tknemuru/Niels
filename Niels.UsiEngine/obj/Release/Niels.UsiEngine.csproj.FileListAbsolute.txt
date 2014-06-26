@@ -1,0 +1,8 @@
+C:\work\visualstudio\Niels\Niels.UsiEngine\bin\Release\Niels.UsiEngine.exe.config
+C:\work\visualstudio\Niels\Niels.UsiEngine\bin\Release\Niels.UsiEngine.exe
+C:\work\visualstudio\Niels\Niels.UsiEngine\bin\Release\Niels.UsiEngine.pdb
+C:\work\visualstudio\Niels\Niels.UsiEngine\bin\Release\Niels.dll
+C:\work\visualstudio\Niels\Niels.UsiEngine\bin\Release\Niels.pdb
+C:\work\visualstudio\Niels\Niels.UsiEngine\obj\Release\Niels.UsiEngine.csprojResolveAssemblyReference.cache
+C:\work\visualstudio\Niels\Niels.UsiEngine\obj\Release\Niels.UsiEngine.exe
+C:\work\visualstudio\Niels\Niels.UsiEngine\obj\Release\Niels.UsiEngine.pdb
