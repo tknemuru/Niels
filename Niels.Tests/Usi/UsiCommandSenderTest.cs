@@ -7,6 +7,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using Niels.Usi;
 using System.IO;
+using Niels.Tests.TestHelper;
+using Niels.Collections;
 
 namespace Niels.Tests.Usi
 {
@@ -42,6 +44,15 @@ namespace Niels.Tests.Usi
             List<string> actual = sender.SendLog;
 
             CollectionAssert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TestSendBestMove()
+        {
+            BoardContextForTest context = new BoardContextForTest(Turn.Black);
+            context.SetDefaultStartPosition();
+            UsiCommandSender sender = new UsiCommandSender();
+            sender.SendBestMove(context);
         }
     }
 }

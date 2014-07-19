@@ -19,14 +19,14 @@ namespace Niels.Usi
     public class UsiCommandSender
     {
         /// <summary>
-        /// Sender
-        /// </summary>
-        private TextWriter Sender { get; set; }
-
-        /// <summary>
         /// 送信ログ
         /// </summary>
         public List<string> SendLog { get; private set; }
+
+        /// <summary>
+        /// Sender
+        /// </summary>
+        private TextWriter Sender { get; set; }
 
         /// <summary>
         /// コンストラクタ
@@ -78,10 +78,29 @@ namespace Niels.Usi
         public void SendBestMove(BoardContext context)
         {
             CpuPlayer player = new CpuPlayer();
+
+            // 探索情報の送信を開始
+            Task.Run(() => this.SendSearchInfo(player));
+
+            // 探索開始
             uint move = player.Put(context);
-            SfenNotation notation = new SfenNotation();
-            string sfenMove = notation.ConvertToSfenMove(move);
+            string sfenMove = SfenNotation.ConvertToSfenMove(move);
+            this.Flush(player.Searcher.SearchInfo.ToString());
             this.Flush("bestmove " + sfenMove);
+        }
+
+        /// <summary>
+        /// infoを送信します。
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
+        private async Task SendSearchInfo(Player player)
+        {
+            while (!player.Searcher.SearchInfo.IsSearchEnd)
+            {
+                this.Flush(player.Searcher.SearchInfo.ToString());
+                await Task.Delay(500);
+            }            
         }
 
         /// <summary>

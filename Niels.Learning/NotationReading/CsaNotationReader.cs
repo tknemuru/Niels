@@ -131,13 +131,13 @@ namespace Niels.Learning.NotationReading
             {
                 int formFile = int.Parse(csaMoves[(int)MoveUnit.FromIndex].Substring(0, 1));
                 int fromRank = int.Parse(csaMoves[(int)MoveUnit.FromIndex].Substring(1, 1));
-                fromIndex = (uint)this.GetIndex(formFile, fromRank);
-                fromBoardType = this.GetBoardType(formFile, fromRank);
+                fromIndex = (uint)GetIndex(formFile, fromRank);
+                fromBoardType = GetBoardType(formFile, fromRank);
             }
             int toFile = int.Parse(csaMoves[(int)MoveUnit.ToIndex].Substring(0, 1));
             int toRank = int.Parse(csaMoves[(int)MoveUnit.ToIndex].Substring(1, 1));
-            uint toIndex = (uint)this.GetIndex(toFile, toRank);
-            BoardType toBoardType = this.GetBoardType(toFile, toRank);
+            uint toIndex = (uint)GetIndex(toFile, toRank);
+            BoardType toBoardType = GetBoardType(toFile, toRank);
 
             Piece putPiece = Pieces[csaMoves[(int)MoveUnit.PutPiece]];
             Piece capturePiece = CaptureGenerator.GenerateAnyCapturedPiece(toBoardType, (int)toIndex, context);

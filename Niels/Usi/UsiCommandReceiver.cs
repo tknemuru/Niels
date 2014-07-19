@@ -121,7 +121,6 @@ namespace Niels.Usi
 
             // TODO:ターンの概念がないのか・・・まいったね。
             BoardContext context = new BoardContext(Turn.Black);
-            SfenNotation notation = new SfenNotation();
 
             if (parameters[0] == "startpos")
             {
@@ -132,7 +131,7 @@ namespace Niels.Usi
                     Debug.Assert(parameters[1] == "moves", "パラメータがmoves以外です。");
                     for (int i = 2; i < parameters.Length; i++)
                     {
-                        context.PutPiece(notation.ConvertToNielsMove(parameters[i], context));
+                        context.PutPiece(SfenNotation.ConvertToNielsMove(parameters[i], context));
                         context.ChangeTurn();
                     }
                 }

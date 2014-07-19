@@ -18,30 +18,29 @@ namespace Niels.Tests.Notation
         [TestMethod]
         public void TestConvertToBestMove()
         {
-            SfenNotation notation = new SfenNotation();
             uint move = Move.GetMove(Piece.Pawn, BoardType.Main, 56, BoardType.SubRight, 8, Turn.Black);
             string expected = "9a1i";
-            string actual = notation.ConvertToSfenMove(move);
+            string actual = SfenNotation.ConvertToSfenMove(move);
             Assert.AreEqual(expected, actual);
 
             move = Move.GetMove(Piece.Pawn, BoardType.SubBottom, 63, BoardType.SubRight, 0, Turn.Black);
             expected = "9i1a";
-            actual = notation.ConvertToSfenMove(move);
+            actual = SfenNotation.ConvertToSfenMove(move);
             Assert.AreEqual(expected, actual);
 
             move = Move.GetMove(Piece.Pawn, BoardType.SubRight, 8, BoardType.Main, 7, Turn.Black);
             expected = "1i2h";
-            actual = notation.ConvertToSfenMove(move);
+            actual = SfenNotation.ConvertToSfenMove(move);
             Assert.AreEqual(expected, actual);
 
             move = Move.GetMove(Piece.Pawn, BoardType.SubBottom, 7, BoardType.Main, 7, Turn.Black);
             expected = "2i2h";
-            actual = notation.ConvertToSfenMove(move);
+            actual = SfenNotation.ConvertToSfenMove(move);
             Assert.AreEqual(expected, actual);
 
             move = Move.GetMove(Piece.PawnPromoted, BoardType.SubBottom, 63, BoardType.SubRight, 0, Turn.Black, Piece.Empty, Promote.Yes);
             expected = "9i1a+";
-            actual = notation.ConvertToSfenMove(move);
+            actual = SfenNotation.ConvertToSfenMove(move);
             Assert.AreEqual(expected, actual);
         }
 
@@ -106,15 +105,14 @@ namespace Niels.Tests.Notation
         [TestMethod]
         public void TestHandValueConvertToSfenMove()
         {
-            SfenNotation notation = new SfenNotation();
             uint move = MoveForTest.GetHandValueMove(Piece.Pawn, 30, Turn.Black);
             string expected = "P*4d";
-            string actual = notation.ConvertToSfenMove(move);
+            string actual = SfenNotationForTest.ConvertToSfenMove(move);
             Assert.AreEqual(expected, actual);
 
             move = MoveForTest.GetHandValueMove(Piece.Rook, 30, Turn.Black);
             expected = "R*4d";
-            actual = notation.ConvertToSfenMove(move);
+            actual = SfenNotationForTest.ConvertToSfenMove(move);
             Assert.AreEqual(expected, actual);
         }
 
@@ -123,18 +121,17 @@ namespace Niels.Tests.Notation
         /// </summary>
         public void TestHandValueConvertToNielsMove()
         {
-            SfenNotationForTest notation = new SfenNotationForTest();
             uint expected = MoveForTest.GetHandValueMove(Piece.Pawn, 79, Turn.Black);
             BoardContext context = new BoardContext(Turn.Black);
             string sfenMove = "P*9h";
-            uint actual = notation.ConvertToNielsMove(sfenMove, context);
+            uint actual = SfenNotationForTest.ConvertToNielsMove(sfenMove, context);
 
             Assert.AreEqual(expected, actual);
 
             expected = MoveForTest.GetHandValueMove(Piece.Rook, 79, Turn.White);
             context = new BoardContext(Turn.White);
             sfenMove = "R*9h";
-            actual = notation.ConvertToNielsMove(sfenMove, context);
+            actual = SfenNotationForTest.ConvertToNielsMove(sfenMove, context);
 
             Assert.AreEqual(expected, actual);
         }

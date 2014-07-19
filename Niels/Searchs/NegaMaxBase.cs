@@ -14,25 +14,19 @@ namespace Niels.Searchs
     /// <summary>
     /// NegaMax法を使用して探索を行います。
     /// </summary>
-    public abstract class NegaMaxBase
+    public abstract class NegaMaxBase : Searcher
     {
-        #region "定数"
         /// <summary>
         /// <para>初期アルファ値</para>
         /// </summary>
-        protected const double DEFAULT_ALPHA = double.MinValue;
+        //protected const int DEFAULT_ALPHA = int.MinValue;
+        protected const int DEFAULT_ALPHA = -1000000;
 
         /// <summary>
         /// <para>初期ベータ値</para>
         /// </summary>
-        protected const double DEFAULT_BETA = double.MaxValue;
-        #endregion
-
-        #region "メンバ変数"
-        /// <summary>
-        /// <para>探索する深さ</para>
-        /// </summary>
-        protected int m_LimitDepth;
+        //protected const int DEFAULT_BETA = int.MaxValue;
+        protected const int DEFAULT_BETA = 1000000;
 
         /// <summary>
         /// 返却するキー
@@ -43,50 +37,50 @@ namespace Niels.Searchs
         /// 評価値
         /// </summary>
         public double Value { get; private set; }
-        #endregion
 
-        #region "コンストラクタ"
         /// <summary>
         /// <para>コンストラクタ</para>
         /// </summary>
         public NegaMaxBase(int limit)
+            : base()
         {
-            this.m_LimitDepth = limit;
+            this.SearchInfo.Depth = limit;
             this.m_Key = this.GetDefaultKey();
             this.Value = DEFAULT_ALPHA;
         }
-        #endregion
 
-        #region "メソッド"
-        #region "公開メソッド"
         /// <summary>
         /// <para>最善手を探索して取得する</para>
         /// </summary>
         /// <returns></returns>
-        public uint GetMove(BoardContext context)
+        protected override uint InnerGetMove(BoardContext context)
         {
             StopWatchLogger.StartEventWatch("NegaMaxBase.SearchBestValue");
-            this.Value = this.SearchBestValue(context ,1, DEFAULT_ALPHA, DEFAULT_BETA);
+            this.Value = this.SearchBestValue(context ,1 , DEFAULT_ALPHA, DEFAULT_BETA);
             FileHelper.WriteLine("BestScore:" + this.Value);
             StopWatchLogger.StopEventWatch("NegaMaxBase.SearchBestValue");
             return this.m_Key;
         }
-        #endregion
 
-        #region "内部メソッド"
         /// <summary>
         /// <para>最善手を探索して取得する</para>
         /// </summary>
         /// <returns></returns>
-        protected double SearchBestValue(BoardContext context, int depth, double alpha, double beta)
+        protected int SearchBestValue(BoardContext context, int depth, int alpha, int beta)
         {
+            // 現在の深さを記録
+            this.SearchInfo.SelctingDepth = depth;
+
+            // 検索したノード数を記録
+            this.SearchInfo.Nodes++;
+
             // 深さ制限に達した
             if (this.IsLimit(depth)) { return this.GetEvaluate(context, 0); }
 
             // 可能な手をすべて生成
             List<uint> leafList = this.GetAllLeaf(context);
 
-            double maxKeyValue = DEFAULT_ALPHA;
+            int maxKeyValue = DEFAULT_ALPHA;
             if (leafList.Count > 0)
             {
                 // ソート
@@ -96,17 +90,29 @@ namespace Niels.Searchs
 
                 foreach (uint leaf in leafList)
                 {
+                    // 読み筋を記録
+                    this.SearchInfo.AddPvLog(leaf);
+
+                    // 現在思考中の手を記録
+                    if (depth == 1)
+                    {
+                        this.SearchInfo.CurrentMove = leaf;
+                    }
+
                     // 前処理
                     StopWatchLogger.StartEventWatch("SearchSetUp");
                     this.SearchSetUp(context, leaf);
                     StopWatchLogger.StopEventWatch("SearchSetUp");
 
-                    double value = this.SearchBestValue(context ,depth + 1, -beta, -alpha) * -1.0D;
+                    int value = this.SearchBestValue(context, depth + 1, -beta, -alpha) * -1;
 
                     // 後処理
                     StopWatchLogger.StartEventWatch("SearchTearDown");
                     this.SearchTearDown(context);
                     StopWatchLogger.StopEventWatch("SearchTearDown");
+
+                    // 記録した読み筋を削除
+                    this.SearchInfo.RemoveLastPvLog();
 
                     // ベータ刈り
                     if (value >= beta)
@@ -121,7 +127,10 @@ namespace Niels.Searchs
                         this.SetKey(leaf, depth);
                         maxKeyValue = value;
                         // α値の更新
-                        alpha = MathHelper.Max<double>(alpha, maxKeyValue);
+                        alpha = MathHelper.Max<int>(alpha, maxKeyValue);
+
+                        // 最善の評価値を記録
+                        this.SearchInfo.ScoreCentiPawn = maxKeyValue;
                     }
                 }
             }
@@ -131,7 +140,7 @@ namespace Niels.Searchs
                 // 前処理
                 this.PassSetUp(context);
 
-                maxKeyValue = this.SearchBestValue(context ,depth + 1, -beta, -alpha) * -1.0D;
+                maxKeyValue = this.SearchBestValue(context ,depth + 1, -beta, -alpha) * -1;
 
                 // 後処理
                 this.PassTearDown(context);
@@ -164,7 +173,7 @@ namespace Niels.Searchs
         /// 評価値を取得する
         /// </summary>
         /// <returns></returns>
-        protected abstract double GetEvaluate(BoardContext context, int nodeId);
+        protected abstract int GetEvaluate(BoardContext context, int nodeId);
 
         /// <summary>
         /// 全てのリーフを取得する
@@ -210,7 +219,5 @@ namespace Niels.Searchs
         /// パスの後処理を行う
         /// </summary>
         protected abstract void PassTearDown(BoardContext context);
-        #endregion
-        #endregion
     }
 }

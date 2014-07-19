@@ -58,15 +58,15 @@ namespace Niels.Notation
         /// </summary>
         /// <param name="move"></param>
         /// <returns></returns>
-        public string ConvertToSfenMove(uint move)
+        public static string ConvertToSfenMove(uint move)
         {
             if (move.IsHandValueMove())
             {
-                return this.ConvertToSfenHandValueMove(move);
+                return ConvertToSfenHandValueMove(move);
             }
             else
             {
-                return this.InnerConvertToSfenMove(move);
+                return InnerConvertToSfenMove(move);
             }
         }
 
@@ -75,12 +75,12 @@ namespace Niels.Notation
         /// </summary>
         /// <param name="move"></param>
         /// <returns></returns>
-        private string InnerConvertToSfenMove(uint move)
+        private static string InnerConvertToSfenMove(uint move)
         {
-            int fromFile = this.GetFile(move.FromBoard(), (int)move.FromIndex());
-            char fromRank = this.GetRank(move.FromBoard(), (int)move.FromIndex());
-            int toFile = this.GetFile(move.ToBoard(), (int)move.ToIndex());
-            char toRank = this.GetRank(move.ToBoard(), (int)move.ToIndex());
+            int fromFile = GetFile(move.FromBoard(), (int)move.FromIndex());
+            char fromRank = GetRank(move.FromBoard(), (int)move.FromIndex());
+            int toFile = GetFile(move.ToBoard(), (int)move.ToIndex());
+            char toRank = GetRank(move.ToBoard(), (int)move.ToIndex());
             string promote = move.IsPromote() ? PromoteSign : string.Empty;
             return string.Format("{0}{1}{2}{3}{4}", fromFile, fromRank, toFile, toRank, promote);
         }
@@ -90,16 +90,16 @@ namespace Niels.Notation
         /// </summary>
         /// <param name="move"></param>
         /// <returns></returns>
-        private string ConvertToSfenHandValueMove(uint move)
+        private static string ConvertToSfenHandValueMove(uint move)
         {
             Debug.Assert(!move.IsCapture(), "持ち駒からの打ち手が駒を取ることはあり得ません。");
             Debug.Assert(!move.IsPromote(), "持ち駒からの打ち手が成る手であることはあり得ません。");
             Debug.Assert(!move.PutPiece().IsPromoted(), "持ち駒が成っていることはあり得ません。");
 
             // 持ち駒をSFEN表記に変換（ターンは常に先手でいい）
-            string piece = this.ConvertToSfenPiece(move.PutPiece(), Turn.Black);
-            int toFile = this.GetFile(move.ToBoard(), (int)move.ToIndex());
-            char toRank = this.GetRank(move.ToBoard(), (int)move.ToIndex());
+            string piece = ConvertToSfenPiece(move.PutPiece(), Turn.Black);
+            int toFile = GetFile(move.ToBoard(), (int)move.ToIndex());
+            char toRank = GetRank(move.ToBoard(), (int)move.ToIndex());
             return string.Format("{0}{1}{2}{3}", piece, HandValueSign, toFile, toRank);
         }
 
@@ -108,7 +108,7 @@ namespace Niels.Notation
         /// </summary>
         /// <param name="piece"></param>
         /// <returns></returns>
-        public string ConvertToSfenPiece(Piece piece, Turn turn)
+        public static string ConvertToSfenPiece(Piece piece, Turn turn)
         {
             string promoteSign = piece.IsPromoted() ? PromoteSign : string.Empty;
             char sfenPiece = PiecesSign[piece.UndoPromoted().GetIndex()];
@@ -121,15 +121,15 @@ namespace Niels.Notation
         /// </summary>
         /// <param name="moves"></param>
         /// <returns></returns>
-        public uint ConvertToNielsMove(string sfenMove, BoardContext context)
+        public static uint ConvertToNielsMove(string sfenMove, BoardContext context)
         {
             if (sfenMove.Contains(HandValueSign))
             {
-                return this.ConvertToNielsHandValueMove(sfenMove, context);
+                return ConvertToNielsHandValueMove(sfenMove, context);
             }
             else
             {
-                return this.InnerConvertToNielsMove(sfenMove, context);
+                return InnerConvertToNielsMove(sfenMove, context);
             }
         }
 
@@ -138,19 +138,19 @@ namespace Niels.Notation
         /// </summary>
         /// <param name="moves"></param>
         /// <returns></returns>
-        protected uint InnerConvertToNielsMove(string sfenMove, BoardContext context)
+        protected static uint InnerConvertToNielsMove(string sfenMove, BoardContext context)
         {
             string from = sfenMove.Substring(0, 2);
-            BoardType fromBoardType = this.GetBoardType(from);
-            int fromIndex = this.GetIndex(from);
+            BoardType fromBoardType = GetBoardType(from);
+            int fromIndex = GetIndex(from);
 
             string to = sfenMove.Substring(2, 2);
-            BoardType toBoardType = this.GetBoardType(to);
-            int toIndex = this.GetIndex(to);
+            BoardType toBoardType = GetBoardType(to);
+            int toIndex = GetIndex(to);
 
             Piece piece = context.GetTurnPiece(fromBoardType, fromIndex).ToPiece();
             Promote promote = Promote.No;
-            if (this.IsPromote(sfenMove))
+            if (IsPromote(sfenMove))
             {
                 promote = Promote.Yes;
                 piece = piece.Promote();
@@ -165,12 +165,12 @@ namespace Niels.Notation
         /// </summary>
         /// <param name="moves"></param>
         /// <returns></returns>
-        protected uint ConvertToNielsHandValueMove(string sfenMove, BoardContext context)
+        protected static uint ConvertToNielsHandValueMove(string sfenMove, BoardContext context)
         {
             Piece piece = HandValuePieces[PiecesSign.IndexOf(sfenMove.Substring(0, 1))];
             string to = sfenMove.Substring(2, 2);
-            BoardType toBoardType = this.GetBoardType(to);
-            int toIndex = this.GetIndex(to);
+            BoardType toBoardType = GetBoardType(to);
+            int toIndex = GetIndex(to);
             return Move.GetHandValueMove(piece, toBoardType, (uint)toIndex, context.Turn);
         }
 
@@ -180,9 +180,9 @@ namespace Niels.Notation
         /// <param name="boardType"></param>
         /// <param name="index"></param>
         /// <returns></returns>
-        protected new char GetRank(BoardType boardType, int index)
+        protected static new char GetRank(BoardType boardType, int index)
         {
-            return RanksSign[base.GetRank(boardType, index) - 1];
+            return RanksSign[NotationBase.GetRank(boardType, index) - 1];
         }
 
         /// <summary>
@@ -190,13 +190,13 @@ namespace Niels.Notation
         /// </summary>
         /// <param name="move"></param>
         /// <returns></returns>
-        protected BoardType GetBoardType(string move)
+        protected static BoardType GetBoardType(string move)
         {
             Debug.Assert((move.Length == 2), "指し手の文字数が不正です。");
             int file = int.Parse(move.Substring(0, 1));
             int rank = RanksSign.IndexOf(move.Substring(1, 1)) + 1;
 
-            return this.GetBoardType(file, rank);
+            return GetBoardType(file, rank);
         }
 
         /// <summary>
@@ -204,13 +204,13 @@ namespace Niels.Notation
         /// </summary>
         /// <param name="move"></param>
         /// <returns></returns>
-        protected int GetIndex(string move)
+        protected static int GetIndex(string move)
         {
             Debug.Assert((move.Length == 2), "指し手の文字数が不正です。");
             int file = int.Parse(move.Substring(0, 1));
             int rank = RanksSign.IndexOf(move.Substring(1, 1)) + 1;
 
-            return this.GetIndex(file, rank);
+            return GetIndex(file, rank);
         }
 
         /// <summary>
@@ -218,7 +218,7 @@ namespace Niels.Notation
         /// </summary>
         /// <param name="move"></param>
         /// <returns></returns>
-        private bool IsPromote(string move)
+        private static bool IsPromote(string move)
         {
             if (move.Length > 4)
             {
