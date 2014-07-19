@@ -26,9 +26,9 @@ namespace Niels.Searchs
         static SearchConfigProvider()
         {
             DefaultSearchConfig = new SearchConfig();
-            DefaultSearchConfig.Depth = 3;
+            DefaultSearchConfig.Depth = 4;
             DefaultSearchConfig.MoveGenerate = MoveProvider.GetAllMoves;
-            DefaultSearchConfig.Evaluator = new ScoreIndexEvaluator();
+            DefaultSearchConfig.Evaluator = new PieceEvaluator();
             DefaultSearchConfig.Order = new DummyOrder();
         }
     }

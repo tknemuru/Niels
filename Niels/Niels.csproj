@@ -60,6 +60,7 @@
     <Compile Include="Evaluators\IEvaluator.cs" />
     <Compile Include="Evaluators\IFeatureVector.cs" />
     <Compile Include="Evaluators\IteratorEvaluator.cs" />
+    <Compile Include="Evaluators\PieceEvaluator.cs" />
     <Compile Include="Evaluators\RandomEvaluator.cs" />
     <Compile Include="Evaluators\ScoreIndexEvaluator.cs" />
     <Compile Include="Evaluators\SequencePositionFeatureVector.cs" />

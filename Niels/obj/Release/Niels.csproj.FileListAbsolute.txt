@@ -1,4 +1,0 @@
-C:\work\visualstudio\Niels\Niels\bin\Release\Niels.dll
-C:\work\visualstudio\Niels\Niels\bin\Release\Niels.pdb
-C:\work\visualstudio\Niels\Niels\obj\Release\Niels.dll
-C:\work\visualstudio\Niels\Niels\obj\Release\Niels.pdb

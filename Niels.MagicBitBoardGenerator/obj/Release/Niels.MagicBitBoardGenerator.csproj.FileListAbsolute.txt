@@ -1,8 +1,0 @@
-C:\work\visualstudio\Niels\Niels.MagicBitBoardGenerator\bin\Release\Niels.MagicBitBoardGenerator.exe.config
-C:\work\visualstudio\Niels\Niels.MagicBitBoardGenerator\bin\Release\Niels.MagicBitBoardGenerator.exe
-C:\work\visualstudio\Niels\Niels.MagicBitBoardGenerator\bin\Release\Niels.MagicBitBoardGenerator.pdb
-C:\work\visualstudio\Niels\Niels.MagicBitBoardGenerator\bin\Release\Niels.dll
-C:\work\visualstudio\Niels\Niels.MagicBitBoardGenerator\bin\Release\Niels.pdb
-C:\work\visualstudio\Niels\Niels.MagicBitBoardGenerator\obj\Release\Niels.MagicBitBoardGenerator.csprojResolveAssemblyReference.cache
-C:\work\visualstudio\Niels\Niels.MagicBitBoardGenerator\obj\Release\Niels.MagicBitBoardGenerator.exe
-C:\work\visualstudio\Niels\Niels.MagicBitBoardGenerator\obj\Release\Niels.MagicBitBoardGenerator.pdb

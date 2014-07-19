@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Boards\BoardContextTest.cs" />
     <Compile Include="Collections\MoveTest.cs" />
+    <Compile Include="Evaluators\PieceEvaluatorTest.cs" />
     <Compile Include="Evaluators\ScoreIndexEvaluatorTest.cs" />
     <Compile Include="Evaluators\SequencePositionFeatureVectorTest.cs" />
     <Compile Include="Filters\CanNotMoveFilterTest.cs" />

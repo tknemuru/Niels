@@ -9,3 +9,14 @@ C:\work\visualstudio\Niels\Niels.NormalizedScoreIndexGenerator.Tests\bin\Debug\N
 C:\work\visualstudio\Niels\Niels.NormalizedScoreIndexGenerator.Tests\bin\Debug\Niels.pdb
 C:\work\visualstudio\Niels\Niels.NormalizedScoreIndexGenerator.Tests\obj\Debug\Niels.NormalizedScoreIndexGenerator.Tests.dll
 C:\work\visualstudio\Niels\Niels.NormalizedScoreIndexGenerator.Tests\obj\Debug\Niels.NormalizedScoreIndexGenerator.Tests.pdb
+C:\work\github\Niels\Niels.NormalizedScoreIndexGenerator.Tests\bin\Debug\Niels.NormalizedScoreIndexGenerator.Tests.dll
+C:\work\github\Niels\Niels.NormalizedScoreIndexGenerator.Tests\bin\Debug\Niels.NormalizedScoreIndexGenerator.Tests.pdb
+C:\work\github\Niels\Niels.NormalizedScoreIndexGenerator.Tests\bin\Debug\Niels.dll
+C:\work\github\Niels\Niels.NormalizedScoreIndexGenerator.Tests\bin\Debug\Niels.NormalizedScoreIndexGenerator.exe
+C:\work\github\Niels\Niels.NormalizedScoreIndexGenerator.Tests\bin\Debug\Niels.Tests.dll
+C:\work\github\Niels\Niels.NormalizedScoreIndexGenerator.Tests\bin\Debug\Niels.NormalizedScoreIndexGenerator.pdb
+C:\work\github\Niels\Niels.NormalizedScoreIndexGenerator.Tests\bin\Debug\Niels.Tests.pdb
+C:\work\github\Niels\Niels.NormalizedScoreIndexGenerator.Tests\bin\Debug\Niels.pdb
+C:\work\github\Niels\Niels.NormalizedScoreIndexGenerator.Tests\obj\Debug\Niels.NormalizedScoreIndexGenerating.Tests.csprojResolveAssemblyReference.cache
+C:\work\github\Niels\Niels.NormalizedScoreIndexGenerator.Tests\obj\Debug\Niels.NormalizedScoreIndexGenerator.Tests.dll
+C:\work\github\Niels\Niels.NormalizedScoreIndexGenerator.Tests\obj\Debug\Niels.NormalizedScoreIndexGenerator.Tests.pdb
