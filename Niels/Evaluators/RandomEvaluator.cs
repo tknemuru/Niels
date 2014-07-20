@@ -11,13 +11,13 @@ namespace Niels.Evaluators
     /// <summary>
     /// ランダムに評価値を返します。
     /// </summary>
-    public class RandomEvaluator : IEvaluator
+    public class RandomEvaluator : Evaluator
     {
         /// <summary>
         /// 評価値を取得します。
         /// </summary>
         /// <returns></returns>
-        public int Evaluate(BoardContext context, int nodeId)
+        public override int Evaluate(BoardContext context)
         {
             Random random = new Random();
             return random.Next(1000);

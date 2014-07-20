@@ -24,7 +24,7 @@ namespace Niels.Tests.Evaluators
             PieceEvaluator ev = new PieceEvaluator();
             BoardContextForTest context = new BoardContextForTest(Turn.Black);
             context.SetDefaultStartPosition();
-            ev.Evaluate(context, 0);
+            ev.Evaluate(context);
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Niels.Collections;
 using Niels.Orders;
+using Niels.Boards;
 
 namespace Niels.Fools
 {
@@ -19,7 +20,7 @@ namespace Niels.Fools
         /// </summary>
         /// <param name="moves"></param>
         /// <returns></returns>
-        public IEnumerable<uint> MoveOrdering(IEnumerable<uint> moves)
+        public IEnumerable<uint> MoveOrdering(IEnumerable<uint> moves, BoardContext context = null)
         {
             return moves.OrderBy(m => m.FromBoard()).ThenBy(m => m.FromIndex()).ThenBy(m => m.ToBoard()).ThenBy(m => m.ToIndex());
         }
