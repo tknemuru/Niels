@@ -21,7 +21,7 @@ namespace Niels.Tests.TestHelper
         /// <returns></returns>
         internal BoardType GetBoardTypeForTest(string move)
         {
-            return base.GetBoardType(move);
+            return SfenNotation.GetBoardType(move);
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Niels.Tests.TestHelper
         /// <returns></returns>
         internal int GetIndexForTest(string move)
         {
-            return base.GetIndex(move);
+            return SfenNotation.GetIndex(move);
         }
     }
 }

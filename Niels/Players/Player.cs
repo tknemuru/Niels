@@ -5,17 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Niels.Boards;
+using Niels.Searchs;
 
 namespace Niels.Players
 {
     /// <summary>
-    /// プレイヤーインターフェイス
+    /// プレイヤー
     /// </summary>
-    public interface IPlayer
+    public abstract class Player
     {
+        /// <summary>
+        /// 探索エンジン
+        /// </summary>
+        public Searcher Searcher { get; set; }
+
         /// <summary>
         /// 駒を置く
         /// </summary>
-        uint Put(BoardContext context);
+        public abstract uint Put(BoardContext context);
     }
 }

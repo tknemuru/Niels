@@ -172,8 +172,8 @@ namespace Niels.Learning.NotationReading
             {
                 // 前回と同じ位置
                 uint lastMove = context.MovedRecord.Peek();
-                file = this.GetFile(lastMove.ToBoard(), (int)lastMove.ToIndex());
-                rank = this.GetRank(lastMove.ToBoard(), (int)lastMove.ToIndex());
+                file = GetFile(lastMove.ToBoard(), (int)lastMove.ToIndex());
+                rank = GetRank(lastMove.ToBoard(), (int)lastMove.ToIndex());
             }
             else
             {
@@ -190,8 +190,8 @@ namespace Niels.Learning.NotationReading
                 }
             }
             Debug.Assert(piece != Piece.Empty, string.Format("認識できない駒です。{0}", move));
-            BoardType toBoard = this.GetBoardType(file, rank);
-            int toIndex = this.GetIndex(file, rank);
+            BoardType toBoard = GetBoardType(file, rank);
+            int toIndex = GetIndex(file, rank);
             // どこで切れるかわからないからもう初めから全部見よう
             string extraInfo = move.Substring(0);
 
@@ -238,31 +238,31 @@ namespace Niels.Learning.NotationReading
             {
                 if (context.Turn == Turn.Black)
                 {
-                    moves = moves.Where(m => this.GetRank(m.FromBoard(), (int)m.FromIndex()) > this.GetRank(m.ToBoard(), (int)m.ToIndex()));
+                    moves = moves.Where(m => GetRank(m.FromBoard(), (int)m.FromIndex()) > GetRank(m.ToBoard(), (int)m.ToIndex()));
                 }
                 else
                 {
-                    moves = moves.Where(m => this.GetRank(m.FromBoard(), (int)m.FromIndex()) < this.GetRank(m.ToBoard(), (int)m.ToIndex()));
+                    moves = moves.Where(m => GetRank(m.FromBoard(), (int)m.FromIndex()) < GetRank(m.ToBoard(), (int)m.ToIndex()));
                 }
             }
             if (extraInfo.Contains("引"))
             {
                 if (context.Turn == Turn.Black)
                 {
-                    moves = moves.Where(m => this.GetRank(m.FromBoard(), (int)m.FromIndex()) < this.GetRank(m.ToBoard(), (int)m.ToIndex()));
+                    moves = moves.Where(m => GetRank(m.FromBoard(), (int)m.FromIndex()) < GetRank(m.ToBoard(), (int)m.ToIndex()));
                 }
                 else
                 {
-                    moves = moves.Where(m => this.GetRank(m.FromBoard(), (int)m.FromIndex()) > this.GetRank(m.ToBoard(), (int)m.ToIndex()));
+                    moves = moves.Where(m => GetRank(m.FromBoard(), (int)m.FromIndex()) > GetRank(m.ToBoard(), (int)m.ToIndex()));
                 }
             }
             if (extraInfo.Contains("寄"))
             {
-                moves = moves.Where(m => (this.GetFile(m.FromBoard(), (int)m.FromIndex()) != this.GetFile(m.ToBoard(), (int)m.ToIndex())) && (this.GetRank(m.FromBoard(), (int)m.FromIndex()) == this.GetRank(m.ToBoard(), (int)m.ToIndex())));
+                moves = moves.Where(m => (GetFile(m.FromBoard(), (int)m.FromIndex()) != GetFile(m.ToBoard(), (int)m.ToIndex())) && (GetRank(m.FromBoard(), (int)m.FromIndex()) == GetRank(m.ToBoard(), (int)m.ToIndex())));
             }
             if (extraInfo.Contains("直"))
             {
-                moves = moves.Where(m => this.GetFile(m.FromBoard(), (int)m.FromIndex()) == this.GetFile(m.ToBoard(), (int)m.ToIndex()));
+                moves = moves.Where(m => GetFile(m.FromBoard(), (int)m.FromIndex()) == GetFile(m.ToBoard(), (int)m.ToIndex()));
             }
 
             if (moves.Count() == 1)
@@ -286,8 +286,8 @@ namespace Niels.Learning.NotationReading
                 ex.Data.Add("result", ReadResult.TooManyMoves);
                 throw ex;
             }
-            int file0 = this.GetFile(moves.ElementAt(0).FromBoard(), (int)moves.ElementAt(0).FromIndex());
-            int file1 = this.GetFile(moves.ElementAt(1).FromBoard(), (int)moves.ElementAt(1).FromIndex());
+            int file0 = GetFile(moves.ElementAt(0).FromBoard(), (int)moves.ElementAt(0).FromIndex());
+            int file1 = GetFile(moves.ElementAt(1).FromBoard(), (int)moves.ElementAt(1).FromIndex());
             if (file0 == file1)
             {
                 var ex = new ArgumentException("同じ筋のため特定できません。");

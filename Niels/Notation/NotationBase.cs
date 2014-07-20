@@ -20,7 +20,7 @@ namespace Niels.Notation
         /// </summary>
         /// <param name="move"></param>
         /// <returns></returns>
-        protected BoardType GetBoardType(int file, int rank)
+        protected static BoardType GetBoardType(int file, int rank)
         {
             Debug.Assert((file >= 1 && file <= 9 && rank >= 1 && rank <= 9), string.Format("筋(file)、段(rank)が不正です。　file:{0} rank{1}", file, rank));
 
@@ -43,11 +43,11 @@ namespace Niels.Notation
         /// </summary>
         /// <param name="move"></param>
         /// <returns></returns>
-        protected int GetIndex(int file, int rank)
+        protected static int GetIndex(int file, int rank)
         {
             Debug.Assert((file >= 1 && file <= 9 && rank >= 1 && rank <= 9), string.Format("筋(file)、段(rank)が不正です。　file:{0} rank{1}", file, rank));
 
-            BoardType boardType = this.GetBoardType(file, rank);
+            BoardType boardType = GetBoardType(file, rank);
 
             switch (boardType)
             {
@@ -66,7 +66,7 @@ namespace Niels.Notation
         /// 筋を取得します(1～9)
         /// </summary>
         /// <returns></returns>
-        protected int GetFile(BoardType boardType, int index)
+        protected static int GetFile(BoardType boardType, int index)
         {
             int baseFile = (index / 8);
             if ((boardType == BoardType.Main) || (boardType == BoardType.SubBottom))
@@ -89,7 +89,7 @@ namespace Niels.Notation
         /// <param name="boardType"></param>
         /// <param name="index"></param>
         /// <returns></returns>
-        protected int GetRank(BoardType boardType, int index)
+        protected static int GetRank(BoardType boardType, int index)
         {
             if ((boardType == BoardType.Main) || (boardType == BoardType.SubRight && index != 8))
             {

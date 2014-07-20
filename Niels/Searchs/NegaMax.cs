@@ -18,21 +18,16 @@ namespace Niels.Searchs
     /// </summary>
     public class NegaMax : NegaMaxBase
     {
-        #region "定数"
         /// <summary>
         /// キーの初期値
         /// </summary>
         private const uint DEFAULT_KEY = 99;
-        #endregion
 
-        #region "メンバ変数"
         /// <summary>
         /// 探索設定情報
         /// </summary>
         private SearchConfig Config { get; set; }
-        #endregion
 
-        #region "コンストラクタ"
         /// <summary>
         /// <para>コンストラクタ</para>
         /// </summary>
@@ -41,13 +36,7 @@ namespace Niels.Searchs
         {
             this.Config = config;
         }
-        #endregion
 
-        #region "メソッド"
-        #region "公開メソッド"
-        #endregion
-
-        #region "内部メソッド"
         /// <summary>
         /// 深さ制限に達した場合にはTrueを返す
         /// </summary>
@@ -55,17 +44,17 @@ namespace Niels.Searchs
         /// <returns></returns>
         protected override bool IsLimit(int limit)
         {
-            return (limit >= this.m_LimitDepth);
+            return (limit >= this.SearchInfo.Depth);
         }
 
         /// <summary>
         /// 評価値を取得する
         /// </summary>
         /// <returns></returns>
-        protected override double GetEvaluate(BoardContext context, int nodeId)
+        protected override int GetEvaluate(BoardContext context, int nodeId)
         {
             StopWatchLogger.StartEventWatch("SearchBestPointer-GetEvaluate");
-            double score = this.Config.Evaluator.Evaluate(context, nodeId);
+            int score = this.Config.Evaluator.Evaluate(context, nodeId);
             StopWatchLogger.StopEventWatch("SearchBestPointer-GetEvaluate");
 
             return (score * this.GetParity(context));
@@ -153,11 +142,9 @@ namespace Niels.Searchs
         /// <summary>
         /// パリティ
         /// </summary>
-        private double GetParity(BoardContext context)
+        private int GetParity(BoardContext context)
         {
-            return (context.Turn == Turn.Black) ? 1D : -1D;
+            return (context.Turn == Turn.Black) ? 1 : -1;
         }
-        #endregion
-        #endregion
     }
 }

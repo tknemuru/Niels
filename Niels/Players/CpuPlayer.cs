@@ -2,28 +2,34 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Threading.Tasks;
 
 using Niels.Strategys;
 using Niels.Boards;
+using Niels.Searchs;
 
 namespace Niels.Players
 {
     /// <summary>
     /// CPUプレイヤー
     /// </summary>
-    public class CpuPlayer : IPlayer
+    public class CpuPlayer : Player
     {
         /// <summary>
-        /// 戦略
+        /// コンストラクタ
         /// </summary>
-        private IStrategy _strategy = new CpuStrategy();
+        public CpuPlayer()
+        {
+            this.Searcher = new NegaMax(SearchConfigProvider.DefaultSearchConfig);
+        }
 
         /// <summary>
         /// 駒を置く
         /// </summary>
-        public uint Put(BoardContext context)
-        {
-            uint move = this._strategy.GetMove(context);
+        public override uint Put(BoardContext context)
+        {            
+            uint move = this.Searcher.GetMove(context);
+            this.Searcher.SearchInfo.IsSearchEnd = true;
             return move;
         }
     }

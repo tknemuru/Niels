@@ -106,7 +106,7 @@
     <Compile Include="Orders\DummyOrder.cs" />
     <Compile Include="Orders\IOrder.cs" />
     <Compile Include="Players\CpuPlayer.cs" />
-    <Compile Include="Players\IPlayer.cs" />
+    <Compile Include="Players\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Searchs\ISearch.cs" />
     <Compile Include="Searchs\NegaMax.cs" />
@@ -116,10 +116,12 @@
     <Compile Include="Searchs\SearchConfig.cs" />
     <Compile Include="Searchs\SearchConfigProvider.cs" />
     <Compile Include="Searchs\NodeDebugInfo.cs" />
+    <Compile Include="Searchs\Searcher.cs" />
     <Compile Include="Searchs\SimpleSearch.cs" />
     <Compile Include="Strategys\CpuStrategy.cs" />
     <Compile Include="Strategys\IStrategy.cs" />
     <Compile Include="Usi\Commands\UsiCommand.cs" />
+    <Compile Include="Usi\SearchInfo.cs" />
     <Compile Include="Usi\UsiCommandReceiver.cs" />
     <Compile Include="Usi\UsiCommandSender.cs" />
   </ItemGroup>
