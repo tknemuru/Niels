@@ -11,7 +11,7 @@ namespace Niels.Evaluators
     /// <summary>
     /// 評価値をイテレータ形式で返します。
     /// </summary>
-    public class IteratorEvaluator : IEvaluator
+    public class IteratorEvaluator : Evaluator
     {
         /// <summary>
         /// 評価値のソート順
@@ -51,7 +51,7 @@ namespace Niels.Evaluators
         /// 評価値を取得します。
         /// </summary>
         /// <returns></returns>
-        public int Evaluate(BoardContext context, int nodeId)
+        public override int Evaluate(BoardContext context)
         {
             if (this.Order == IteratorOrder.Asc)
             {

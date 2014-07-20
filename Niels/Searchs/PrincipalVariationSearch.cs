@@ -96,18 +96,14 @@ namespace Niels.Searchs
             // 評価を実行する地点に達した
             if (this.IsNeedEvaluate(depth))
             {
-#if DEBUG
-                return this.Config.Evaluator.Evaluate(context, this.NodeId);
-#else
-                return this.Config.Evaluator.Evaluate(context, this.NodeId);
-#endif
+                return this.Config.Evaluator.Evaluate(context);
             }
 
             // 打ち手を生成
             uint[] moves = this.Config.MoveGenerate(context).ToArray();
 
             // 打ち手をソート
-            this.Config.Order.MoveOrdering(moves);
+            this.Config.Order.MoveOrdering(moves, context);
 
             int max = int.MinValue;
             int value = int.MinValue;
@@ -203,18 +199,14 @@ namespace Niels.Searchs
             // 評価を実行する地点に達した
             if (this.IsNeedEvaluate(depth))
             {
-#if DEBUG
-                return this.Config.Evaluator.Evaluate(context, this.NodeId);
-#else
-                return this.Config.Evaluator.Evaluate(context, this.NodeId);
-#endif
+                return this.Config.Evaluator.Evaluate(context);
             }
 
             // 打ち手を生成
             uint[] moves = this.Config.MoveGenerate(context).ToArray();
 
             // 打ち手をソート
-            this.Config.Order.MoveOrdering(moves);
+            this.Config.Order.MoveOrdering(moves, context);
 
             int min = int.MaxValue;
             int value = int.MaxValue;

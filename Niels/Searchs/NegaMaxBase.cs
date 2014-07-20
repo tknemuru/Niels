@@ -59,6 +59,7 @@ namespace Niels.Searchs
             this.Value = this.SearchBestValue(context ,1 , DEFAULT_ALPHA, DEFAULT_BETA);
             FileHelper.WriteLine("BestScore:" + this.Value);
             StopWatchLogger.StopEventWatch("NegaMaxBase.SearchBestValue");
+            StopWatchLogger.WriteAllEventTimes("./log/eventtime.txt");
             return this.m_Key;
         }
 
@@ -75,17 +76,17 @@ namespace Niels.Searchs
             this.SearchInfo.Nodes++;
 
             // 深さ制限に達した
-            if (this.IsLimit(depth)) { return this.GetEvaluate(context, 0); }
+            if (this.IsLimit(depth)) { return this.GetEvaluate(context); }
 
             // 可能な手をすべて生成
-            List<uint> leafList = this.GetAllLeaf(context);
+            var leafList = this.GetAllLeaf(context);
 
             int maxKeyValue = DEFAULT_ALPHA;
-            if (leafList.Count > 0)
+            if (leafList.Count() > 0)
             {
                 // ソート
                 StopWatchLogger.StartEventWatch("MoveOrdering");
-                if (this.IsOrdering(depth)) { leafList = this.MoveOrdering(leafList); }
+                if (this.IsOrdering(depth)) { leafList = this.MoveOrdering(leafList, context); }
                 StopWatchLogger.StopEventWatch("MoveOrdering");
 
                 foreach (uint leaf in leafList)
@@ -173,13 +174,13 @@ namespace Niels.Searchs
         /// 評価値を取得する
         /// </summary>
         /// <returns></returns>
-        protected abstract int GetEvaluate(BoardContext context, int nodeId);
+        protected abstract int GetEvaluate(BoardContext context);
 
         /// <summary>
         /// 全てのリーフを取得する
         /// </summary>
         /// <returns></returns>
-        protected abstract List<uint> GetAllLeaf(BoardContext context);
+        protected abstract IEnumerable<uint> GetAllLeaf(BoardContext context);
 
         /// <summary>
         /// ソートをする場合はTrueを返す
@@ -192,7 +193,7 @@ namespace Niels.Searchs
         /// </summary>
         /// <param name="allLeaf"></param>
         /// <returns></returns>
-        protected abstract List<uint> MoveOrdering(List<uint> allLeaf);
+        protected abstract IEnumerable<uint> MoveOrdering(IEnumerable<uint> allLeaf, BoardContext context);
 
         /// <summary>
         /// キーの初期値を取得する

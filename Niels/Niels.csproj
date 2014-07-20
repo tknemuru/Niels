@@ -57,7 +57,7 @@
     <Compile Include="Collections\Turn.cs" />
     <Compile Include="Diagnostics\MoveDebug.cs" />
     <Compile Include="Diagnostics\StopWatchLogger.cs" />
-    <Compile Include="Evaluators\IEvaluator.cs" />
+    <Compile Include="Evaluators\Evaluator.cs" />
     <Compile Include="Evaluators\IFeatureVector.cs" />
     <Compile Include="Evaluators\IteratorEvaluator.cs" />
     <Compile Include="Evaluators\PieceEvaluator.cs" />
@@ -71,7 +71,6 @@
     <Compile Include="Filters\MoveFilter.cs" />
     <Compile Include="Filters\FileDuplicatePawnExistsMoveFilter.cs" />
     <Compile Include="Filters\PieceDuplicateExistsMoveFilter.cs" />
-    <Compile Include="Fools\FoolEvaluator.cs" />
     <Compile Include="Fools\FoolMoveGenerator.cs" />
     <Compile Include="Fools\FoolOrder.cs" />
     <Compile Include="Fools\FoolSearch.cs" />
@@ -105,6 +104,7 @@
     <Compile Include="Notation\SfenNotation.cs" />
     <Compile Include="Orders\DummyOrder.cs" />
     <Compile Include="Orders\IOrder.cs" />
+    <Compile Include="Orders\PieceEvaluateOrder.cs" />
     <Compile Include="Players\CpuPlayer.cs" />
     <Compile Include="Players\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -26,7 +26,7 @@ namespace Niels.Tests.Evaluators
             context.SetDefaultStartPosition();
             uint move = MoveForTest.GetMove(Piece.Pawn, 60, 59, Turn.Black);
             context.PutPiece(move);
-            ev.Evaluate(context, 0);
+            ev.Evaluate(context);
         }
 
         [TestMethod]

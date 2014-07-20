@@ -26,10 +26,11 @@ namespace Niels.Searchs
         static SearchConfigProvider()
         {
             DefaultSearchConfig = new SearchConfig();
-            DefaultSearchConfig.Depth = 4;
+            DefaultSearchConfig.Depth = 5;
+            DefaultSearchConfig.MoveOrderingDepth = 2;
             DefaultSearchConfig.MoveGenerate = MoveProvider.GetAllMoves;
             DefaultSearchConfig.Evaluator = new PieceEvaluator();
-            DefaultSearchConfig.Order = new DummyOrder();
+            DefaultSearchConfig.Order = new PieceEvaluateOrder();            
         }
     }
 }

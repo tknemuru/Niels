@@ -15,7 +15,7 @@ namespace Niels.Evaluators
     /// <summary>
     /// スコアインデックスによる評価を行います。
     /// </summary>
-    public class ScoreIndexEvaluator : IEvaluator
+    public class ScoreIndexEvaluator : Evaluator
     {
         /// <summary>
         /// 最大ステージ数
@@ -41,7 +41,7 @@ namespace Niels.Evaluators
         /// 評価値を取得します。
         /// </summary>
         /// <returns></returns>
-        public int Evaluate(BoardContext context, int nodeId)
+        public override int Evaluate(BoardContext context)
         {
             int stage = GetStage(context.TurnCount);
             if (!ScoreIndexTable.ContainsKey(stage))

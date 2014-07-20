@@ -41,7 +41,7 @@ namespace Niels.Searchs
                 //    context.UndoPutPiece();
                 //}
                 //var innerBestMove = evaluate.OrderBy(value => value).FirstOrDefault();
-                moveEvaluates.Add(move, ev.Evaluate(context, 0));
+                moveEvaluates.Add(move, ev.Evaluate(context));
                 context.UndoChangeTurn();
                 context.UndoPutPiece();
             }

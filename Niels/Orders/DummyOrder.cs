@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Niels.Boards;
+
 namespace Niels.Orders
 {
     /// <summary>
@@ -16,7 +18,7 @@ namespace Niels.Orders
         /// </summary>
         /// <param name="moves"></param>
         /// <returns></returns>
-        public IEnumerable<uint> MoveOrdering(IEnumerable<uint> moves)
+        public IEnumerable<uint> MoveOrdering(IEnumerable<uint> moves, BoardContext context = null)
         {
             return moves;
         }

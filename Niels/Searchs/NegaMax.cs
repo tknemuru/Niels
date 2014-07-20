@@ -51,10 +51,10 @@ namespace Niels.Searchs
         /// 評価値を取得する
         /// </summary>
         /// <returns></returns>
-        protected override int GetEvaluate(BoardContext context, int nodeId)
+        protected override int GetEvaluate(BoardContext context)
         {
             StopWatchLogger.StartEventWatch("SearchBestPointer-GetEvaluate");
-            int score = this.Config.Evaluator.Evaluate(context, nodeId);
+            int score = this.Config.Evaluator.Evaluate(context);
             StopWatchLogger.StopEventWatch("SearchBestPointer-GetEvaluate");
 
             return (score * this.GetParity(context));
@@ -64,9 +64,9 @@ namespace Niels.Searchs
         /// 全てのリーフを取得する
         /// </summary>
         /// <returns></returns>
-        protected override List<uint> GetAllLeaf(BoardContext context)
+        protected override IEnumerable<uint> GetAllLeaf(BoardContext context)
         {
-            return MoveProvider.GetAllMoves(context).ToList();
+            return MoveProvider.GetAllMoves(context);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Niels.Searchs
         /// <returns></returns>
         protected override bool IsOrdering(int depth)
         {
-            return (depth <= 3);
+            return (depth <= this.Config.MoveOrderingDepth);
         }
 
         /// <summary>
@@ -83,9 +83,9 @@ namespace Niels.Searchs
         /// </summary>
         /// <param name="allLeaf"></param>
         /// <returns></returns>
-        protected override List<uint> MoveOrdering(List<uint> allLeaf)
+        protected override IEnumerable<uint> MoveOrdering(IEnumerable<uint> allLeaf, BoardContext context)
         {          
-            return this.Config.Order.MoveOrdering(allLeaf).ToList();
+            return this.Config.Order.MoveOrdering(allLeaf, context);
         }
 
         /// <summary>

@@ -35,6 +35,11 @@ namespace Niels.Searchs
         /// <summary>
         /// 指し手の評価機能を提供します。
         /// </summary>
-        public IEvaluator Evaluator { get; set; }
+        public Evaluator Evaluator { get; set; }
+
+        /// <summary>
+        /// ソートを行う最大の深さ
+        /// </summary>
+        public int MoveOrderingDepth { get; set; }
     }
 }
